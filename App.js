@@ -1,37 +1,54 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import CustomButton from './components/CustomButton'
-export default class App extends React.Component {
+import React, { Component } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList
+} from "react-native";
 
-  constructor() {
-    super()
-    this.state = {
-      productCount: 0
-    }
-  }
-
-  addProduct = () => {
-
-    this.setState((prevState) => ({ 'productCount': prevState.productCount + 1 }))
-
-
-  }
-
+class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <CustomButton onPress={this.addProduct} />
-        <Text>{this.state.productCount}</Text>
+        <Text style={styles.title}>1. Checkout the Tutorial branch that you want to view!</Text>
+        <View style={styles.codeView}>
+          <Text style={styles.code}>$ git branch --all</Text>
+          <Text style={styles.code}>* master</Text>
+          <Text style={styles.code}>* remotes/origin/1-components-state-props</Text>
+        </View>
+        <Text style={styles.title}>2. To view the first tutorial</Text>
+        <View style={styles.codeView}>
+          <Text style={styles.code}>$ git checkout 1-components-state-props</Text>
+        </View>
+        <Text style={styles.title}>3. Refresh the Simulator!</Text>
+
+
       </View>
     );
   }
 }
+export default App;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
+  title: {
+    alignSelf: 'flex-start', paddingHorizontal: 20,
+    fontWeight: "700",
+
+  },
+  codeView: {
+    width: "90%",
+    borderRadius: 5,
+    margin: 20,
+    padding: 20,
+    backgroundColor: '#eaeaea'
+  },
+  code: {
+    fontWeight: "400",
+    fontSize: 15
+  }
 });
